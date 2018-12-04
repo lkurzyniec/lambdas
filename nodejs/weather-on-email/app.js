@@ -26,32 +26,35 @@ exports.handler = (event, context, callback) => {
             callback(error);
         }
 
-        var rawEmail = getRawEmail({
+        const emailDefinition = {
             fromName: 'IoT Button',
             fromAddress: FROM_ADDRESS,
             toAddress: TO_ADDRESS,
             subject: 'Weather from IoT Button',
             body: `Weather attached.<br><br>Button: <b>${event.serialNumber}</b><br>Clicked: <b>${event.clickType}</b>`,
             attachmentName: 'weather.png',
-        }, weatherData);
+        };
+        const rawEmail = getRawEmail(emailDefinition, weatherData);
 
         const params = {
             RawMessage: { Data: rawEmail }
         };
+        console.log('Going to send email to:', emailDefinition.toAddress);
         SES.sendRawEmail(params, function (err, data) {
             if (err) {
                 console.error(err, err.stack);
                 callback(err);
             }
 
-            console.log(data);
-            callback(null, "Email with weather sent");
+            console.log('Email sent successfully. Data:', data);
+            callback(null, "Email sent successfully");
         });
     });
 };
 
 const getWeather = (callback) => {
     const url = 'http://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=436&col=181&lang=en';
+    console.log('Going to capture weather');
     http.get(url, (res) => {
         var data = new Stream();
         console.log(`STATUS: ${res.statusCode}`);
@@ -63,7 +66,7 @@ const getWeather = (callback) => {
             callback(null, data.read());
         });
     }).on('error', (e) => {
-        callback(`Failed to get weather: ${e.message}`);
+        callback(`Failed to capture weather: ${e.message}`);
     });
 };
 
