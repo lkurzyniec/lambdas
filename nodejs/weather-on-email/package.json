@@ -1,0 +1,14 @@
+{
+  "name": "iot-button-weather-on-email",
+  "version": "1.0.0",
+  "description": "Sample AWS Lambda to send weather onto email",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Łukasz Kurzyniec",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.369.0"
+  }
+}
