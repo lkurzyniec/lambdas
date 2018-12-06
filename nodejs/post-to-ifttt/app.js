@@ -18,7 +18,7 @@ exports.handler = (event, context, callback) => {
     console.log('Received event:', event);
 
     var postData = JSON.stringify({
-      'value1' : 'Hello world',
+      'value1' : 'Hello IoT world',
       'value2' : `Greetings from IFTTT Maker triggered by ${event.serialNumber} IoT Button`,
       'value3' : event.clickType,
     });
