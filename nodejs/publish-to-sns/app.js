@@ -12,7 +12,7 @@ The following JSON template shows what is sent as the payload:
 const AWS = require('aws-sdk');
 
 const SNS = new AWS.SNS();
-const TOPIC_ARN = 'arn:aws:sns:eu-west-1:170639386838:iot-button';
+const TOPIC_ARN = process.env.TopicArn;
 
 exports.handler = (event, context, callback) => {
     console.log('Received event:', event);

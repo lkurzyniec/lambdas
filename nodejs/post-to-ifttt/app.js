@@ -11,8 +11,8 @@ The following JSON template shows what is sent as the payload:
 
 const https = require('https');
 
-const makerEvent = 'email';
-const makerKey = 'bYwXiEfEinG5G3hfRycXDN';
+const makerEvent = process.env.MakerEvent;
+const makerKey = process.env.MakerKey;
 
 exports.handler = (event, context, callback) => {
     console.log('Received event:', event);

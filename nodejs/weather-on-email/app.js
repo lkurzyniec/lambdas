@@ -15,8 +15,8 @@ const Stream = require('stream').Transform;
 const AWS = require('aws-sdk');
 const SES = new AWS.SES();
 
-const FROM_ADDRESS = 'no-reply@sns.amazonaws.com';
-const TO_ADDRESS = 'o1577829@nwytg.net';
+const FROM_ADDRESS = process.env.FromAddress;
+const TO_ADDRESS = process.env.ToAddress;
 
 exports.handler = (event, context, callback) => {
     console.log('Received event:', event);
