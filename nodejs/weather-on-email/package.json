@@ -9,6 +9,6 @@
   "author": "Łukasz Kurzyniec",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.369.0"
+    "aws-sdk": "^2.814.0"
   }
 }
